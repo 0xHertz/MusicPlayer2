@@ -1775,6 +1775,8 @@ BOOL CMusicPlayerDlg::OnInitDialog()
 
     // 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
     //  执行此操作
+    //touming
+    
 
     //载入图标资源
     theApp.LoadIconResource();

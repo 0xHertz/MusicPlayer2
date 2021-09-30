@@ -55,7 +55,9 @@ void CMainDialogBase::ShowTitlebar(bool show)
 	}
 	else
 	{
+		
 		ModifyStyle(WS_CAPTION, 0, SWP_FRAMECHANGED);		//去掉标题栏
+		//SetMenu(nullptr);
 	}
 }
 

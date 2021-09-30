@@ -95,7 +95,7 @@ void CPlayerUIBase::DrawInfo(bool reset)
         {
             CRect rc_title_bar = draw_rect;
             rc_title_bar.bottom = rc_title_bar.top + m_layout.titlabar_height;
-            draw_rect.top = rc_title_bar.bottom;
+            //draw_rect.top = rc_title_bar.bottom;
             DrawTitleBar(rc_title_bar);
         }
 
@@ -1676,19 +1676,19 @@ void CPlayerUIBase::DrawStatusBar(CRect rect, bool reset)
 
 void CPlayerUIBase::DrawTitleBar(CRect rect)
 {
-    //填充标题栏背景
-    bool draw_background{ IsDrawBackgroundAlpha() };
-    //绘制背景
-    BYTE alpha;
-    if (theApp.m_app_setting_data.dark_mode)
-        alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) / 2;
-    else
-        alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) / 2;
+    ////填充标题栏背景
+    //bool draw_background{ IsDrawBackgroundAlpha() };
+    ////绘制背景
+    //BYTE alpha;
+    //if (theApp.m_app_setting_data.dark_mode)
+    //    alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) / 2;
+    //else
+    //    alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) / 2;
 
-    if (draw_background)
-        m_draw.FillAlphaRect(rect, m_colors.color_back, alpha);
-    else
-        m_draw.FillRect(rect, m_colors.color_back);
+    //if (draw_background)
+    //    m_draw.FillAlphaRect(rect, m_colors.color_back, alpha);
+    //else
+    //    m_draw.FillRect(rect, m_colors.color_back);
 
     ////绘制应用图标
     //auto app_icon = theApp.m_icon_set.app;
