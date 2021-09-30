@@ -37,27 +37,27 @@ void CPlayerUI2::_DrawInfo(CRect draw_rect, bool reset)
         CRect rc_tmp;
 
         //全屏模式时在右上角绘制时间
-        if (m_ui_data.full_screen)
+        /*if (m_ui_data.full_screen)
         {
             DrawCurrentTime();
-        }
+        }*/
 
         //绘制右上角图标
         int top_right_icon_size = DrawTopRightIcons();
 
         //绘制播放状态
-        int text_height{ DPI(18) };
+        int text_height{ DPI(18) };/*
         rc_tmp.MoveToXY(start_point.x + EdgeMargin(true), start_point.y + EdgeMargin(false));
         rc_tmp.right = draw_rect.right - EdgeMargin(true) - top_right_icon_size;
         rc_tmp.bottom = rc_tmp.top + text_height;
-        DrawSongInfo(rc_tmp, reset);
+        DrawSongInfo(rc_tmp, reset);*/
 
-        //绘制曲目格式
-        rc_tmp.MoveToX(start_point.x + EdgeMargin(true));
-        rc_tmp.MoveToY(rc_tmp.bottom);
-        wstring format_str = GetDisplayFormatString();
-        static CDrawCommon::ScrollInfo scroll_info2;
-        m_draw.DrawScrollText(rc_tmp, format_str.c_str(), m_colors.color_text, GetScrollTextPixel(), false, scroll_info2, reset);
+        ////绘制曲目格式
+        //rc_tmp.MoveToX(start_point.x + EdgeMargin(true));
+        //rc_tmp.MoveToY(rc_tmp.bottom);
+        //wstring format_str = GetDisplayFormatString();
+        //static CDrawCommon::ScrollInfo scroll_info2;
+        //m_draw.DrawScrollText(rc_tmp, format_str.c_str(), m_colors.color_text, GetScrollTextPixel(), false, scroll_info2, reset);
 
         //计算专辑封面的位置
         int bottom_height;      //专辑封面底部到绘图区询问的距离
@@ -165,11 +165,11 @@ void CPlayerUI2::_DrawInfo(CRect draw_rect, bool reset)
         static CDrawCommon::ScrollInfo scroll_info_artist;
         m_draw.DrawScrollText(rc_tmp, CPlayer::GetInstance().GetCurrentSongInfo().GetArtist().c_str(), m_colors.color_text, GetScrollTextPixel(true), true, scroll_info_artist, reset);
 
-        //绘制控制条
-        rc_tmp.MoveToY(rc_spectrum_area.bottom + DPI(4));
-        rc_tmp.bottom = rc_tmp.top + DPI(24);
-        rc_tmp.right = draw_rect.right - EdgeMargin(true);
-        DrawToolBar(rc_tmp, true);
+        ////绘制控制条
+        //rc_tmp.MoveToY(rc_spectrum_area.bottom + DPI(4));
+        //rc_tmp.bottom = rc_tmp.top + DPI(24);
+        //rc_tmp.right = draw_rect.right - EdgeMargin(true);
+        //DrawToolBar(rc_tmp, true);
 
         //m_draw_data.info_rect = m_draw_rect;
         //m_draw_data.info_rect.bottom = m_draw_data.info_rect.top + rc_tmp.bottom;
@@ -184,8 +184,8 @@ void CPlayerUI2::_DrawInfo(CRect draw_rect, bool reset)
         {
             rc_tmp.MoveToX(EdgeMargin(true));
             rc_tmp.MoveToY(rc_tmp.bottom + Margin());
-            rc_tmp.right = info_rect.right - EdgeMargin(true);
-            rc_tmp.bottom = info_rect.bottom - Margin();
+            rc_tmp.right = info_rect.right;
+            rc_tmp.bottom = info_rect.bottom;
 
             lyric_margin = Margin();
         }
@@ -193,7 +193,7 @@ void CPlayerUI2::_DrawInfo(CRect draw_rect, bool reset)
         {
             rc_tmp.MoveToX(info_rect.right);
             rc_tmp.MoveToY(2 * text_height2 + EdgeMargin(false));
-            rc_tmp.right = draw_rect.right - EdgeMargin(true);
+            rc_tmp.right = draw_rect.right - 100;
             rc_tmp.bottom = rc_spectrum_area.bottom;
 
             lyric_margin = 2 * Margin();
@@ -235,6 +235,14 @@ void CPlayerUI2::_DrawInfo(CRect draw_rect, bool reset)
 
         //绘制专辑封面
         CRect rc_tmp = info_rect;
+
+        /*CRect  rect;
+
+        rect = CRect(CPoint(40, 40), CSize(200, 12));
+        dc.RoundRect(rect, CPoint(10, 10));
+
+        CPoint(10, 10));*/
+
         const int cover_side = draw_rect.Height() - DPI(66);
         rc_tmp.DeflateRect(EdgeMargin(true), EdgeMargin(false));
         rc_tmp.right = rc_tmp.left + cover_side;
@@ -282,12 +290,12 @@ void CPlayerUI2::_DrawInfo(CRect draw_rect, bool reset)
         rc_tmp.MoveToXY(cover_side + EdgeMargin(true) + Margin(), rc_tmp.bottom + DPI(4));
         rc_tmp.right = info_rect.right - EdgeMargin(true) - top_right_icon_size;
         rc_tmp.bottom = rc_tmp.top + text_height2;
-        m_draw.SetFont(&theApp.m_font_set.font10.GetFont(theApp.m_ui_data.full_screen));
+        m_draw.SetFont(&theApp.m_font_set.lyric.GetFont(theApp.m_ui_data.full_screen));
         static CDrawCommon::ScrollInfo scroll_info_title;
         m_draw.DrawScrollText(rc_tmp, CPlayer::GetInstance().GetCurrentSongInfo().GetTitle().c_str(), m_colors.color_text, GetScrollTextPixel(true), true, scroll_info_title, reset);
 
         rc_tmp.MoveToY(rc_tmp.bottom);
-        m_draw.SetFont(&theApp.m_font_set.font9.GetFont(theApp.m_ui_data.full_screen));
+        m_draw.SetFont(&theApp.m_font_set.lyric.GetFont(theApp.m_ui_data.full_screen));
         static CDrawCommon::ScrollInfo scroll_info_artist;
         m_draw.DrawScrollText(rc_tmp, CPlayer::GetInstance().GetCurrentSongInfo().GetArtist().c_str(), m_colors.color_text, GetScrollTextPixel(true), true, scroll_info_artist, reset);
 

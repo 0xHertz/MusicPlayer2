@@ -2496,11 +2496,22 @@ void CPlayer::AlbumCoverGaussBlur()
 	}
 	else
 	{
+
+		COLORREF pixel;
 		CImage image_tmp;
+
 		CSize image_size(m_album_cover.GetWidth(), m_album_cover.GetHeight());
 		//将图片缩小以减小高斯模糊的计算量
 		CCommon::SizeZoom(image_size, 300);		//图片大小按比例缩放，使长边等于300
 		CDrawCommon::ImageResize(m_album_cover, image_tmp, image_size);		//拉伸图片
+		//降低图片亮度
+		//int maxY = image_tmp.GetHeight(), maxX = image_tmp.GetWidth();
+		for (int x = 0; x < 300; x++) {
+			for (int y = 0; y < 300; y++) {
+				pixel = image_tmp.GetPixel(x, y);
+				image_tmp.SetPixelRGB(x, y, GetRValue(pixel)*0.75, GetGValue(pixel)*0.75, GetBValue(pixel)*0.75);
+			}
+		}
 #ifdef _DEBUG
 		image_tmp.Save(_T("..\\Debug\\image_tmp.bmp"), Gdiplus::ImageFormatBMP);
 #endif // _DEBUG

@@ -641,68 +641,68 @@ void CPlayerUIBase::DrawPlayTag(CRect rect, LPCTSTR str_text)
 void CPlayerUIBase::DrawToolBar(CRect rect, bool draw_translate_button)
 {
     bool draw_background{ IsDrawBackgroundAlpha() };
-    //绘制背景
-    BYTE alpha;
-    if (!draw_background)
-        alpha = 255;
-    else if (theApp.m_app_setting_data.dark_mode)
-        alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) * 2 / 3;
-    else
-        alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency);
+    ////绘制背景
+    //BYTE alpha;
+    //if (!draw_background)
+    //    alpha = 255;
+    //else if (theApp.m_app_setting_data.dark_mode)
+    //    alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) * 2 / 3;
+    //else
+    //    alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency);
 
-    if (!theApp.m_app_setting_data.button_round_corners)
-        m_draw.FillAlphaRect(rect, m_colors.color_control_bar_back, alpha);
-    else
-    {
-        m_draw.SetDrawArea(rect);
-        m_draw.DrawRoundRect(rect, m_colors.color_control_bar_back, theApp.DPI(4), alpha);
-    }
+    //if (!theApp.m_app_setting_data.button_round_corners)
+    //    m_draw.FillAlphaRect(rect, m_colors.color_control_bar_back, alpha);
+    //else
+    //{
+    //    m_draw.SetDrawArea(rect);
+    //    m_draw.DrawRoundRect(rect, m_colors.color_control_bar_back, theApp.DPI(4), alpha);
+    //}
 
     CRect rc_tmp = rect;
 
-    //绘制循环模式
-    rc_tmp.right = rect.left + rect.Height();
-    IconRes* pIcon = GetRepeatModeIcon();
-    if (pIcon != nullptr)
-        DrawControlBarBtn(rc_tmp, m_buttons[BTN_REPETEMODE], *pIcon);
+    ////绘制循环模式
+    //rc_tmp.right = rect.left + rect.Height();
+    //IconRes* pIcon = GetRepeatModeIcon();
+    //if (pIcon != nullptr)
+    //    DrawControlBarBtn(rc_tmp, m_buttons[BTN_REPETEMODE], *pIcon);
 
-    //绘制设置按钮
-    rc_tmp.MoveToX(rc_tmp.right);
-    DrawControlBarBtn(rc_tmp, m_buttons[BTN_SETTING], theApp.m_icon_set.setting);
+    ////绘制设置按钮
+    //rc_tmp.MoveToX(rc_tmp.right);
+    //DrawControlBarBtn(rc_tmp, m_buttons[BTN_SETTING], theApp.m_icon_set.setting);
 
-    //绘制均衡器按钮
-    rc_tmp.MoveToX(rc_tmp.right);
-    DrawControlBarBtn(rc_tmp, m_buttons[BTN_EQ], theApp.m_icon_set.eq);
+    ////绘制均衡器按钮
+    //rc_tmp.MoveToX(rc_tmp.right);
+    //DrawControlBarBtn(rc_tmp, m_buttons[BTN_EQ], theApp.m_icon_set.eq);
 
-    //绘制切换界面按钮
-    rc_tmp.MoveToX(rc_tmp.right);
-    DrawControlBarBtn(rc_tmp, m_buttons[BTN_SKIN], theApp.m_icon_set.skin);
+    ////绘制切换界面按钮
+    //rc_tmp.MoveToX(rc_tmp.right);
+    //DrawControlBarBtn(rc_tmp, m_buttons[BTN_SKIN], theApp.m_icon_set.skin);
 
-    //绘制迷你模式按钮
-    if (rect.Width() >= DPI(190))
-    {
-        rc_tmp.MoveToX(rc_tmp.right);
-        //m_buttons[BTN_MINI].enable = !theApp.m_ui_data.full_screen;
-        DrawControlBarBtn(rc_tmp, m_buttons[BTN_MINI], theApp.m_icon_set.mini);
-    }
-    else
-    {
-        m_buttons[BTN_MINI].rect = CRect();
-    }
+    ////绘制迷你模式按钮
+    //if (rect.Width() >= DPI(190))
+    //{
+    //    rc_tmp.MoveToX(rc_tmp.right);
+    //    //m_buttons[BTN_MINI].enable = !theApp.m_ui_data.full_screen;
+    //    DrawControlBarBtn(rc_tmp, m_buttons[BTN_MINI], theApp.m_icon_set.mini);
+    //}
+    //else
+    //{
+    //    m_buttons[BTN_MINI].rect = CRect();
+    //}
 
-    //绘制曲目信息按钮
-    if (rect.Width() >= DPI(214))
-    {
-        rc_tmp.MoveToX(rc_tmp.right);
-        DrawControlBarBtn(rc_tmp, m_buttons[BTN_INFO], theApp.m_icon_set.info);
-    }
-    else
-    {
-        m_buttons[BTN_INFO].rect = CRect();
-    }
+    ////绘制曲目信息按钮
+    //if (rect.Width() >= DPI(214))
+    //{
+    //    rc_tmp.MoveToX(rc_tmp.right);
+    //    DrawControlBarBtn(rc_tmp, m_buttons[BTN_INFO], theApp.m_icon_set.info);
+    //}
+    //else
+    //{
+    //    m_buttons[BTN_INFO].rect = CRect();
+    //}
 
     //绘制查找按钮
-    if (rect.Width() >= DPI(238))
+    /*if (rect.Width() >= DPI(238))
     {
         rc_tmp.MoveToX(rc_tmp.right);
         DrawControlBarBtn(rc_tmp, m_buttons[BTN_FIND], theApp.m_icon_set.find_songs);
@@ -710,75 +710,75 @@ void CPlayerUIBase::DrawToolBar(CRect rect, bool draw_translate_button)
     else
     {
         m_buttons[BTN_FIND].rect = CRect();
-    }
+    }*/
 
-    //绘制AB重复按钮
-    if (rect.Width() >= DPI(262))
-    {
-        rc_tmp.MoveToX(rc_tmp.right);
-        CRect rc_btn = rc_tmp;
-        rc_btn.DeflateRect(DPI(2), DPI(2));
-        DrawABRepeatButton(rc_btn);
-    }
-    else
-    {
-        m_buttons[BTN_AB_REPEAT].rect = CRect();
-    }
+    ////绘制AB重复按钮
+    //if (rect.Width() >= DPI(262))
+    //{
+    //    rc_tmp.MoveToX(rc_tmp.right);
+    //    CRect rc_btn = rc_tmp;
+    //    rc_btn.DeflateRect(DPI(2), DPI(2));
+    //    DrawABRepeatButton(rc_btn);
+    //}
+    //else
+    //{
+    //    m_buttons[BTN_AB_REPEAT].rect = CRect();
+    //}
 
-    //绘制翻译按钮
-    if (draw_translate_button && rect.Width() >= DPI(286))
-    {
-        rc_tmp.MoveToX(rc_tmp.right);
-        CRect translate_rect = rc_tmp;
-        translate_rect.DeflateRect(DPI(2), DPI(2));
-        DrawTranslateButton(translate_rect);
-    }
-    else
-    {
-        m_buttons[BTN_TRANSLATE].rect = CRect();
-    }
+    ////绘制翻译按钮
+    //if (draw_translate_button && rect.Width() >= DPI(286))
+    //{
+    //    rc_tmp.MoveToX(rc_tmp.right);
+    //    CRect translate_rect = rc_tmp;
+    //    translate_rect.DeflateRect(DPI(2), DPI(2));
+    //    DrawTranslateButton(translate_rect);
+    //}
+    //else
+    //{
+    //    m_buttons[BTN_TRANSLATE].rect = CRect();
+    //}
 
-    //绘制桌面歌词按钮
-    if (rect.Width() >= DPI(310))
-    {
-        rc_tmp.MoveToX(rc_tmp.right);
-        CRect translate_rect = rc_tmp;
-        translate_rect.DeflateRect(DPI(2), DPI(2));
-        DrawTextButton(translate_rect, m_buttons[BTN_LRYIC], CCommon::LoadText(IDS_LRC), theApp.m_lyric_setting_data.show_desktop_lyric);
-    }
-    else
-    {
-        m_buttons[BTN_LRYIC].rect = CRect();
-    }
+    ////绘制桌面歌词按钮
+    //if (rect.Width() >= DPI(310))
+    //{
+    //    rc_tmp.MoveToX(rc_tmp.right);
+    //    CRect translate_rect = rc_tmp;
+    //    translate_rect.DeflateRect(DPI(2), DPI(2));
+    //    DrawTextButton(translate_rect, m_buttons[BTN_LRYIC], CCommon::LoadText(IDS_LRC), theApp.m_lyric_setting_data.show_desktop_lyric);
+    //}
+    //else
+    //{
+    //    m_buttons[BTN_LRYIC].rect = CRect();
+    //}
 
     rc_tmp.left = rc_tmp.right = rect.right;
 
     //显示<<<<
-    if (rect.Width() >= DPI(361))
-    {
-        int progress;
-        Time time{ CPlayer::GetInstance().GetCurrentPosition() };
-        if (CPlayer::GetInstance().IsMidi())
-        {
-            ////progress = (CPlayer::GetInstance().GetMidiInfo().midi_position % 16 + 1) *1000 / 16;
-            //if (CPlayer::GetInstance().GetMidiInfo().tempo == 0)
-            //  progress = 0;
-            //else
-            //  progress = (time.toInt() * 1000 / CPlayer::GetInstance().GetMidiInfo().tempo % 4 + 1) * 250;
-            progress = (CPlayer::GetInstance().GetMidiInfo().midi_position % 4 + 1) * 250;
-        }
-        else
-        {
-            progress = (time.sec % 4 * 1000 + time.msec) / 4;
-        }
-        rc_tmp.right = rc_tmp.left;
-        rc_tmp.left = rc_tmp.right - DPI(44);
-        m_draw.DrawWindowText(rc_tmp, _T("<<<<"), m_colors.color_text, m_colors.color_text_2, progress);
-    }
+    //if (rect.Width() >= DPI(361))
+    //{
+    //    int progress;
+    //    Time time{ CPlayer::GetInstance().GetCurrentPosition() };
+    //    if (CPlayer::GetInstance().IsMidi())
+    //    {
+    //        ////progress = (CPlayer::GetInstance().GetMidiInfo().midi_position % 16 + 1) *1000 / 16;
+    //        //if (CPlayer::GetInstance().GetMidiInfo().tempo == 0)
+    //        //  progress = 0;
+    //        //else
+    //        //  progress = (time.toInt() * 1000 / CPlayer::GetInstance().GetMidiInfo().tempo % 4 + 1) * 250;
+    //        progress = (CPlayer::GetInstance().GetMidiInfo().midi_position % 4 + 1) * 250;
+    //    }
+    //    else
+    //    {
+    //        progress = (time.sec % 4 * 1000 + time.msec) / 4;
+    //    }
+    //    rc_tmp.right = rc_tmp.left;
+    //    rc_tmp.left = rc_tmp.right - DPI(44);
+    //    m_draw.DrawWindowText(rc_tmp, _T("<<<<"), m_colors.color_text, m_colors.color_text_2, progress);
+    //}
 
 
     //显示音量
-    CString vol_str;
+    /*CString vol_str;
     vol_str.Format(_T(": %d%%"), CPlayer::GetInstance().GetVolume());
     vol_str = CCommon::LoadText(IDS_VOLUME) + vol_str;
     int width = m_draw.GetTextExtent(vol_str).cx;
@@ -787,7 +787,7 @@ void CPlayerUIBase::DrawToolBar(CRect rect, bool draw_translate_button)
 
     rc_tmp.right = rc_tmp.left;
     rc_tmp.left = rc_tmp.right - width - Margin();
-    DrawVolumeButton(rc_tmp, vol_str);
+    DrawVolumeButton(rc_tmp, vol_str);*/
 }
 
 CRect CPlayerUIBase::DrawAreaToClient(CRect rect, CRect draw_area)
@@ -1294,9 +1294,13 @@ void CPlayerUIBase::DrawControlBar(CRect rect)
     const int btn_height = min(rect.Height(), btn_width);
 
     CRect rc_btn{ CPoint(rect.left, rect.top + (rect.Height() - btn_height) / 2), CSize(btn_width, btn_height) };
-    DrawControlButton(rc_btn, m_buttons[BTN_STOP], theApp.m_icon_set.stop_l);
+    ////DrawControlButton(rc_btn, m_buttons[BTN_STOP], theApp.m_icon_set.stop_l);
+    //rc_btn.right = rect.left + rect.Height();
+    //IconRes* pIcon = GetRepeatModeIcon();
+    //if (pIcon != nullptr)
+    //    DrawControlBarBtn(rc_btn, m_buttons[BTN_REPETEMODE], *pIcon);
 
-    rc_btn.MoveToX(rc_btn.right);
+    //rc_btn.MoveToX(rc_btn.right);
     DrawControlButton(rc_btn, m_buttons[BTN_PREVIOUS], theApp.m_icon_set.previous_l);
 
     rc_btn.MoveToX(rc_btn.right);
@@ -1314,17 +1318,37 @@ void CPlayerUIBase::DrawControlBar(CRect rect)
     rc_btn.left = rc_btn.right - btn_side;
     rc_btn.top = rect.top + (rect.Height() - btn_side) / 2;
     rc_btn.bottom = rc_btn.top + btn_side;
-    DrawControlBarBtn(rc_btn, m_buttons[BTN_SHOW_PLAYLIST], theApp.m_icon_set.show_playlist);
+    //DrawControlBarBtn(rc_btn, m_buttons[BTN_SHOW_PLAYLIST], theApp.m_icon_set.show_playlist);
 
-    rc_btn.MoveToX(rc_btn.left - btn_side);
-    m_buttons[BTN_SELECT_FOLDER].enable = !CPlayer::GetInstance().m_loading;
-    DrawControlBarBtn(rc_btn, m_buttons[BTN_SELECT_FOLDER], theApp.m_icon_set.media_lib);
+    //rc_btn.MoveToX(rc_btn.left - btn_side);
+    //m_buttons[BTN_SELECT_FOLDER].enable = !CPlayer::GetInstance().m_loading;
+    //DrawControlBarBtn(rc_btn, m_buttons[BTN_SELECT_FOLDER], theApp.m_icon_set.media_lib);
+    //rc_btn.right = rect.left + rect.Height();
+    IconRes* pIcon = GetRepeatModeIcon();
+    if (pIcon != nullptr)
+        DrawControlBarBtn(rc_btn, m_buttons[BTN_REPETEMODE], *pIcon);
+    ////
+    
 
+    //rc_btn.right = rect.left + rect.Height();
     rc_btn.MoveToX(rc_btn.left - btn_side);
     if (CPlayer::GetInstance().IsFavourite())
         DrawControlBarBtn(rc_btn, m_buttons[BTN_FAVOURITE], theApp.m_icon_set.heart);
     else
         DrawControlBarBtn(rc_btn, m_buttons[BTN_FAVOURITE], theApp.m_icon_set.favourite);
+
+    //rc_btn.MoveToX(rc_btn.right);
+    CString vol_str;
+    vol_str.Format(_T("%d"), CPlayer::GetInstance().GetVolume());
+    //vol_str = CCommon::LoadText(IDS_VOLUME) + vol_str;
+    int width = m_draw.GetTextExtent(vol_str).cx;
+    if (width <= 0 || width > DPI(72))
+        width = DPI(72);
+
+    rc_btn.right = rc_btn.left;
+    rc_btn.left = rc_btn.right - width - Margin();
+    DrawVolumeButton(rc_btn, vol_str);
+
 
     if (!progress_on_top)
     {
@@ -1333,30 +1357,36 @@ void CPlayerUIBase::DrawControlBar(CRect rect)
         progress_rect.right = rc_btn.left - Margin();
         DrawProgressBar(progress_rect);
     }
+
+    //rc_btn.MoveToX(rc_btn.right);
+    
 }
 
 void CPlayerUIBase::DrawProgressBar(CRect rect)
 {
     //绘制播放时间
     bool draw_progress_time{ rect.Width() > DPI(110) };
-    CRect rc_time = rect;
-    if (draw_progress_time)
-    {
-        wstring strTime = CPlayer::GetInstance().GetTimeString();
+    //CRect rc_time = rect;
+    //if (draw_progress_time)
+    //{
+    //    wstring strTime = CPlayer::GetInstance().GetTimeString();
 
-        m_draw.SetFont(&theApp.m_font_set.font8.GetFont(m_ui_data.full_screen));
-        CSize strSize = m_draw.GetTextExtent(strTime.c_str());
-        rc_time.left = rc_time.right - strSize.cx;
-        //rc_time.InflateRect(0, DPI(2));
-        rc_time.top -= DPI(1);
-        m_draw.DrawWindowText(rc_time, strTime.c_str(), m_colors.color_text);
-    }
+    //    m_draw.SetFont(&theApp.m_font_set.font8.GetFont(m_ui_data.full_screen));
+    //    CSize strSize = m_draw.GetTextExtent(strTime.c_str());
+    //    rc_time.left = rc_time.right - strSize.cx;
+    //    //rc_time.InflateRect(0, DPI(2));
+    //    rc_time.top -= DPI(1);
+    //    if (theApp.m_app_setting_data.dark_mode) {
+    //        m_draw.DrawWindowText(rc_time, strTime.c_str(), ColorTable::WHITE);
+    //    }
+    //    m_draw.DrawWindowText(rc_time, strTime.c_str(), GRAY(64));
+    //}
 
     //绘制进度条
     const int progress_height = DPI(4);
     CRect progress_rect = rect;
     if (draw_progress_time)
-        progress_rect.right = rc_time.left - Margin();
+        progress_rect.right = rect.right - Margin();
     progress_rect.top = rect.top + (rect.Height() - progress_height) / 2;
     progress_rect.bottom = progress_rect.top + progress_height;
     DrawProgess(progress_rect);
@@ -1653,54 +1683,54 @@ void CPlayerUIBase::DrawTitleBar(CRect rect)
     if (theApp.m_app_setting_data.dark_mode)
         alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) / 2;
     else
-        alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) * 2 / 3;
+        alpha = ALPHA_CHG(theApp.m_app_setting_data.background_transparency) / 2;
 
     if (draw_background)
-        m_draw.FillAlphaRect(rect, m_colors.color_control_bar_back, alpha);
+        m_draw.FillAlphaRect(rect, m_colors.color_back, alpha);
     else
-        m_draw.FillRect(rect, m_colors.color_control_bar_back);
+        m_draw.FillRect(rect, m_colors.color_back);
 
-    //绘制应用图标
-    auto app_icon = theApp.m_icon_set.app;
+    ////绘制应用图标
+    //auto app_icon = theApp.m_icon_set.app;
     CRect rect_temp = rect;
     rect_temp.right = rect_temp.left + m_layout.titlabar_height;
-    //使图标在矩形中居中
-    CSize icon_size = app_icon.GetSize();
-    CRect rc_icon{ rect_temp };
-    rc_icon.left = rect_temp.left + (rect_temp.Width() - icon_size.cx) / 2;
-    rc_icon.top = rect_temp.top + (rect_temp.Height() - icon_size.cy) / 2;
-    rc_icon.right = rc_icon.left + icon_size.cx;
-    rc_icon.bottom = rc_icon.top + icon_size.cy;
-    m_draw.DrawIcon(app_icon.GetIcon(), rc_icon.TopLeft(), icon_size);
+    ////使图标在矩形中居中
+    //CSize icon_size = app_icon.GetSize();
+    //CRect rc_icon{ rect_temp };
+    //rc_icon.left = rect_temp.left + (rect_temp.Width() - icon_size.cx) / 2;
+    //rc_icon.top = rect_temp.top + (rect_temp.Height() - icon_size.cy) / 2;
+    //rc_icon.right = rc_icon.left + icon_size.cx;
+    //rc_icon.bottom = rc_icon.top + icon_size.cy;
+    //m_draw.DrawIcon(app_icon.GetIcon(), rc_icon.TopLeft(), icon_size);
 
     //绘制右侧图标
     rect_temp = rect;
     rect_temp.left = rect_temp.right - theApp.DPI(30);
     //关闭图标
     DrawUIButton(rect_temp, m_buttons[BTN_APP_CLOSE], theApp.m_icon_set.app_close);
-    //最大化/还原图标
-    rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
-    auto max_icon = (theApp.m_pMainWnd->IsZoomed() ? theApp.m_icon_set.restore : theApp.m_icon_set.maximize);
-    DrawUIButton(rect_temp, m_buttons[BTN_MAXIMIZE], max_icon);
-    //最小化图标
-    rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
-    DrawUIButton(rect_temp, m_buttons[BTN_MINIMIZE], theApp.m_icon_set.minimize);
+    ////最大化/还原图标
+    //rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
+    //auto max_icon = (theApp.m_pMainWnd->IsZoomed() ? theApp.m_icon_set.restore : theApp.m_icon_set.maximize);
+    //DrawUIButton(rect_temp, m_buttons[BTN_MAXIMIZE], max_icon);
+    ////最小化图标
+    //rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
+    //DrawUIButton(rect_temp, m_buttons[BTN_MINIMIZE], theApp.m_icon_set.minimize);
     //全屏模式图标
     rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
     DrawUIButton(rect_temp, m_buttons[BTN_FULL_SCREEN], theApp.m_icon_set.full_screen1);
-    //迷你模式图标
-    rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
-    DrawUIButton(rect_temp, m_buttons[BTN_MINI1], theApp.m_icon_set.mini);
+    ////迷你模式图标
+    //rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
+    //DrawUIButton(rect_temp, m_buttons[BTN_MINI1], theApp.m_icon_set.mini);
     //主菜单图标
     rect_temp.MoveToX(rect_temp.left - rect_temp.Width());
     DrawUIButton(rect_temp, m_buttons[BTN_MENU], theApp.m_icon_set.menu);
 
-    //绘制标题栏文本
-    rect_temp.right = rect_temp.left;
-    rect_temp.left = m_layout.titlabar_height;
-    static CDrawCommon::ScrollInfo scroll_info{};
-    m_draw.DrawScrollText(rect_temp, theApp.m_window_title.GetString(), m_colors.color_text, GetScrollTextPixel(), false, scroll_info);
-    //m_draw.DrawWindowText(rect_temp, title.GetString(), m_colors.color_text);
+    ////绘制标题栏文本
+    //rect_temp.right = rect_temp.left;
+    //rect_temp.left = m_layout.titlabar_height;
+    //static CDrawCommon::ScrollInfo scroll_info{};
+    //m_draw.DrawScrollText(rect_temp, theApp.m_window_title.GetString(), m_colors.color_text, GetScrollTextPixel(), false, scroll_info);
+    ////m_draw.DrawWindowText(rect_temp, title.GetString(), m_colors.color_text);
 }
 
 void CPlayerUIBase::DrawAlbumCover(CRect rect)
@@ -1746,7 +1776,7 @@ void CPlayerUIBase::DrawVolumeButton(CRect rect, LPCTSTR str, bool adj_btn_top)
     if (m_buttons[BTN_VOLUME].hover)        //鼠标指向音量区域时，以另外一种颜色显示
         m_draw.DrawWindowText(rect, str, m_colors.color_text_heighlight);
     else
-        m_draw.DrawWindowText(rect, str, m_colors.color_text);
+        m_draw.DrawWindowText(rect, str, GRAY(64));
     //设置音量调整按钮的位置
     m_buttons[BTN_VOLUME].rect = DrawAreaToClient(rect, m_draw_rect);
     m_buttons[BTN_VOLUME].rect.DeflateRect(0, DPI(4));

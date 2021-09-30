@@ -94,14 +94,14 @@ void CPlayerUI::_DrawInfo(CRect draw_rect, bool reset)
     tmp.right = draw_rect.right - EdgeMargin(true);
     static CDrawCommon::ScrollInfo scroll_info4;
     m_draw.DrawScrollText2(tmp, lable3_content.c_str(), m_colors.color_text, GetScrollTextPixel(true), false, scroll_info4, reset);
-    //显示文件格式和比特率
-    tmp.MoveToXY(text_start.x, text_start.y + 4 * text_height);
-    tmp.right = tmp.left + DPI(52);
-    m_draw.DrawWindowText(tmp, lable4_str.c_str(), m_colors.color_text_lable);
-    tmp.MoveToX(tmp.left + DPI(52));
-    tmp.right = draw_rect.right - EdgeMargin(true);
-    static CDrawCommon::ScrollInfo scroll_info5;
-    m_draw.DrawScrollText2(tmp, lable4_content.c_str(), m_colors.color_text, GetScrollTextPixel(true), false, scroll_info5, reset);
+    ////显示文件格式和比特率
+    //tmp.MoveToXY(text_start.x, text_start.y + 4 * text_height);
+    //tmp.right = tmp.left + DPI(52);
+    //m_draw.DrawWindowText(tmp, lable4_str.c_str(), m_colors.color_text_lable);
+    //tmp.MoveToX(tmp.left + DPI(52));
+    //tmp.right = draw_rect.right - EdgeMargin(true);
+    //static CDrawCommon::ScrollInfo scroll_info5;
+    //m_draw.DrawScrollText2(tmp, lable4_content.c_str(), m_colors.color_text, GetScrollTextPixel(true), false, scroll_info5, reset);
 
     //显示频谱分析
     CRect spectral_rect{ CPoint{draw_rect.left + EdgeMargin(true), draw_rect.top + EdgeMargin(false)}, SpectralSize() };
