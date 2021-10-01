@@ -6,7 +6,7 @@ MusicPlayer2是一款集音乐播放、歌词显示、格式转换等众多功�
 
 # 相关链接：
 
-请[点击此处](https://github.com/0xHertz/MusicPlayer)下载MusicPlayer2的最新（简化）版本。
+请[点击此处](https://github.com/0xHertz/MusicPlayer2/releases)下载MusicPlayer2的最新（简化）版本。
 
 # 主要特性
 
