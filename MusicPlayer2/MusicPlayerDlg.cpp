@@ -1045,7 +1045,7 @@ void CMusicPlayerDlg::CreateDesktopShortcut()
         {
             AfxMessageBox(_T("更新注册表失败"));
         }
-        AfxMessageBox(_T("更新注册表成功"));
+        AfxMessageBox(_T("更新注册表成功,请重启以应用更改"));
     }
 }
 
