@@ -64,6 +64,7 @@ CMusicPlayerApp::CMusicPlayerApp()
         m_module_path_reg = L'\"' + m_module_path_reg;
         m_module_path_reg += L'\"';
     }
+    
 
     //获取当前DPI
     HDC hDC = ::GetDC(NULL);

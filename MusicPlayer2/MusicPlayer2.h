@@ -38,6 +38,7 @@ public:
     wstring m_recent_playlist_data_path;
     wstring m_desktop_path;		//桌面的路径
     wstring m_module_path_reg;  //程序exe文件的路径
+    wstring m_seg_set = L"0";
     //wstring m_temp_path;		//临时文件夹的路径
 
     vector<DeviceInfo> m_output_devices;	//播放设备的信息

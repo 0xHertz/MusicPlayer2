@@ -1013,7 +1013,11 @@ void CMusicPlayerDlg::EnablePlaylist(bool enable)
 
 void CMusicPlayerDlg::CreateDesktopShortcut()
 {
-    //如果目录下没有recent_path和song_data文件，就判断为是第一次运行程序，提示用户是否创建桌面快捷方式
+    //如果目录下没有recent_path和song_data文件，就判断为是第一次运行程序，提示用户是否创建桌面快捷方式 并 设置注册表
+    // 设置相关注册表项，使得顶部边框最小
+
+    CRegKey key;
+    
     if (!CCommon::FileExist(theApp.m_song_data_path) && !CCommon::FileExist(theApp.m_recent_path_dat_path))
     {
         wstring shortcut_path;
@@ -1031,6 +1035,17 @@ void CMusicPlayerDlg::CreateDesktopShortcut()
                 MessageBox(CCommon::LoadText(IDS_SHORTCUT_CREAT_FAILED), NULL, MB_ICONWARNING);
             }
         }
+        if (key.Open(HKEY_CURRENT_USER, _T("Control Panel\\Desktop\\WindowMetrics")) != ERROR_SUCCESS)
+        {
+            //打开注册表“Software\\Microsoft\\Windows\\CurrentVersion\\Run”失败，则返回false
+            AfxMessageBox(_T("获取注册表失败"));
+            exit;
+        }
+        if (key.SetStringValue(L"PaddedBorderWidth", L"0") != ERROR_SUCCESS)
+        {
+            AfxMessageBox(_T("更新注册表失败"));
+        }
+        AfxMessageBox(_T("更新注册表成功"));
     }
 }
 
