@@ -1738,6 +1738,29 @@ void CMusicPlayerDlg::LoadDefaultBackground()
     else
         background_img = theApp.m_app_setting_data.default_background.c_str();
     theApp.m_ui_data.default_background.Load(background_img);
+    //模糊化
+    //COLORREF pixel;
+    CImage image_tmp;
+
+    CSize image_size(theApp.m_ui_data.default_background.GetWidth(), theApp.m_ui_data.default_background.GetHeight());
+    //将图片缩小以减小高斯模糊的计算量
+    CCommon::SizeZoom(image_size, 300);		//图片大小按比例缩放，使长边等于300
+    CDrawCommon::ImageResize(theApp.m_ui_data.default_background, image_tmp, image_size);		//拉伸图片
+    ////降低图片亮度
+    ////int maxY = image_tmp.GetHeight(), maxX = image_tmp.GetWidth();
+    //for (int x = 0; x < 300; x++) {
+    //    for (int y = 0; y < 300; y++) {
+    //        pixel = image_tmp.GetPixel(x, y);
+    //        image_tmp.SetPixelRGB(x, y, GetRValue(pixel) * 0.75, GetGValue(pixel) * 0.75, GetBValue(pixel) * 0.75);
+    //    }
+    //}
+
+    //执行高斯模糊
+    CGaussBlur gauss_blur;
+    gauss_blur.SetSigma(static_cast<double>(theApp.m_app_setting_data.gauss_blur_radius) / 10);		//设置高斯模糊半径
+    gauss_blur.DoGaussBlur(image_tmp, theApp.m_ui_data.default_background);
+
+    
     if (theApp.m_ui_data.default_background.IsNull())
         theApp.m_ui_data.default_background.Load((theApp.m_local_dir + DEFAULT_BACKGROUND_NAME).c_str());
     if (theApp.m_ui_data.default_background.IsNull())
